@@ -51,10 +51,36 @@
     animation: 1s transicion 0.20; /* Aplica la animación llamada 'transicion' */
 }
 
+.activo {
+ background: rgba(0, 0, 0, 0.2); /* Fondo semitransparente en hover */
+  
+  font-weight: bold;
+  padding: 0.5em;
+  border-radius: 1px;
+}
+
 /* Definición de la animación 'transicion' */
 @keyframes transicion {
     0% {
         opacity: 0; /* Al iniciar, el elemento es invisible */
     }
     /* No se define el 100%, por lo tanto, se mantiene el estado alcanzado en el 0% */
+}
+
+@media (max-width: 768px) {
+    #menu ul {
+        flex-wrap: nowrap;            /* Evita que los elementos pasen a otra línea */
+        overflow-x: auto;             /* Habilita scroll horizontal si es necesario */
+        white-space: nowrap;         /* Impide que los elementos se rompan */
+        padding: 0px;             /* Reduce relleno lateral */
+    }
+
+    #menu a {
+        font-size: 14px;              /* Reduce tamaño del texto */
+        padding: 0px;            /* Menos espacio entre enlaces */
+    }
+
+    .barra {
+        padding: 0 4px;               /* Reduce espacio entre barras */
+    }
 }

@@ -157,16 +157,30 @@ main {
 /* Adaptación del encabezado a pantallas pequeñas */
 @media (max-width: 768px) {
     .encabezado {
-        flex-direction: column; /* Cambia a formato vertical */
-        align-items: center; /* Centra los elementos */
+        /* Ya no usamos flex-direction: column */
+        flex-wrap: nowrap; /* Evita salto de línea */
+        padding: 0.5em;
     }
 
-    .logo-izquierda, .logo-derecha {
-        margin: 10px 0; /* Separación vertical entre logos */
+    .logo-izquierda img,
+    .logo-derecha img {
+        max-width: 80px; /* Logos más pequeños */
+    }
+
+    .texto-header h1 {
+        font-size: 1.5em;
+    }
+
+    .texto-header h2 {
+        font-size: 1.1em;
+    }
+
+    .texto-header h3 {
+        font-size: 1em;
     }
 
     .texto-header {
-        text-align: center; /* Centrado del texto */
+        padding: 0 0.5em;
     }
 }
 
@@ -178,7 +192,7 @@ main {
 }
 
 /* Secciones generales dentro de main */
-section {
+/*.contenedor_carreras section {
     margin-bottom: 40px;
     padding: 20px;
     background-color: #f9f9f9;
@@ -189,7 +203,7 @@ section {
 article {
     background-color: #f2f2f2;
     padding: 20px;
-    /*border-radius: 8px;*/
+    border-radius: 8px;
     margin-top: 20px;
     box-shadow: 0 0 5px rgba(0,0,0,0.1);
 }
@@ -254,7 +268,7 @@ aside a:hover {
 .footer {
     background-color: #374701; /* Verde oscuro */
     color: #ffffff; /* Texto blanco */
-    padding: 2em 1em 1em; /* Espaciado interior */
+    padding: 1em; /* Espaciado interior */
     font-size: 0.95em; /* Tamaño de texto ligeramente reducido */
 }
 
@@ -268,25 +282,28 @@ aside a:hover {
 }
 
 /* Columnas del footer */
-.footer-col {
+.footer_col1, .footer_col2, .footer_col3 {
     flex: 1 1 250px; /* Crece proporcionalmente hasta 250px mínimo */
     min-width: 200px; /* Ancho mínimo por columna */
 }
+.footer_col1 {text-align: center;}
 
-.footer-col h4 {
+.footer_col2, .footer_col3 {padding-top: 2em}
+
+.footer h4 {
     font-size: 1.1em; /* Tamaño del encabezado */
     margin-bottom: 0.5em; /* Espaciado inferior */
     color: #f0db4f; /* Amarillo brillante para destacar */
 }
 
-.footer-col p, .footer-col a {
+.footer p, .footer a {
     color: #ffffff; /* Texto blanco */
     text-decoration: none; /* Sin subrayado en enlaces */
     margin: 0.3em 0; /* Espacio entre líneas */
     display: block; /* Cada elemento ocupa su propia línea */
 }
 
-.footer-col a:hover {
+.footer a:hover {
     text-decoration: underline; /* Subrayado al pasar el cursor */
 }
 
@@ -295,10 +312,66 @@ aside a:hover {
     border-top: 1px solid #ffffff33; /* Línea separadora superior con transparencia */
     text-align: center; /* Texto centrado */
     padding-top: 1em; /* Espacio encima del texto */
-    margin-top: 2em; /* Separación del contenido anterior */
+    margin-top: 1em; /* Separación del contenido anterior */
     font-size: 0.85em; /* Tamaño de texto pequeño */
 }
 
+.redes-sociales {
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+  padding: 1em;
+}
+
+.icono {
+  position: relative;
+  color: white;
+  font-size: 1.5em;
+  text-decoration: none;
+  transition: color 0.3s;
+}
+
+.icono:hover {
+  color: #1da1f2; /* o el color que quieras al pasar el cursor */
+}
+
+.icono .tooltip {
+  visibility: hidden;
+  opacity: 0;
+  background-color: white;
+  color: black;
+  text-align: center;
+  border-radius: 5px;
+  padding: 5px 10px;
+  position: absolute;
+  bottom: 150%;
+  left: 50%;
+  transform: translateX(-50%);
+  transition: opacity 0.3s;
+  white-space: nowrap;
+  font-size: 0.85em;
+  font-weight: bold;
+  z-index: 10;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+}
+
+.icono .tooltip::after {
+  content: '';
+  position: absolute;
+  top: 100%; /* punta hacia abajo */
+  left: 50%;
+  transform: translateX(-50%);
+  border-width: 6px;
+  border-style: solid;
+  border-color: white transparent transparent transparent;
+}
+
+.icono:hover .tooltip {
+  visibility: visible;
+  opacity: 1;
+}
+
+/**************************************************************************************************************************************/
 /* Responsive (opcional) */
 @media (max-width: 768px) {
   .contenido-principal {
